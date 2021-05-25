@@ -10,7 +10,6 @@ test('Crear movimiento', async () => {
         date: '04/01/2021',
         amount: 50000.0,
         type: MovementType.INCOME,
-        description: 'Description',
         category: 'Sueldo',
     };
 
@@ -20,7 +19,22 @@ test('Crear movimiento', async () => {
     expect(movement.amount).toBe(movementData.amount);
     expect(movement.type).toBe(movementData.type);
     expect(movement.category).toBe(movementData.category);
-    expect(movement.description).toBe(movementData.description);
+});
+
+test('Agregamos fecha y corroboramos que se cargue', async () => {
+    const movementData = {
+        description: 'Ingreso del mes',
+        date: new Date(2021,2,5),
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+
+    //Corroboramos que la fecha pasada sea la misma con la que se cargo
+    expect(movement.date).toBe(movementData.date);    
 });
 
 test('Agregamos fecha y corroboramos que se cargue', async () => {
@@ -45,7 +59,6 @@ test('Crear movimiento sin tipo', async () => {
         date: '01/01/2021',
         amount: 1000.0,
         category: 'Supermercado',
-        description: 'Description',
     };
 
     // Creamos el movimiento
@@ -54,7 +67,6 @@ test('Crear movimiento sin tipo', async () => {
     expect(movement.amount).toBe(movementData.amount);
     expect(movement.type).toBe(MovementType.EXPENSE);
     expect(movement.category).toBe(movementData.category);
-    expect(movement.description).toBe(movementData.description);
 });
 
 test('Crear movimiento sin fecha', async () => {
