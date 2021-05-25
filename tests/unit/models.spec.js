@@ -23,6 +23,23 @@ test('Crear movimiento', async () => {
     expect(movement.description).toBe(movementData.description);
 });
 
+test('Agregamos fecha y corroboramos que se cargue', async () => {
+    const movementData = {
+        description: 'Ingreso del mes',
+        date: new Date(2021,2,5),
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        
+        category: 'Sueldo',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+
+    //Corroboramos que la fecha pasada sea la misma con la que se cargo
+    expect(movement.date).toBe(movementData.date);    
+});
+
 test('Crear movimiento sin tipo', async () => {
     const movementData = {
         date: '01/01/2021',
@@ -291,14 +308,7 @@ test('Eliminar movimiento', async () => {
 
     // No deben haber movimientos en la lista
     expect(movements.rows.length).toBe(0);
-
-     //Verificamos que el movimiento se haya eliminado
-     let movimiento = await MovementModel.getAll(movementData.id);
-     if (movimiento.count == 0){
-         console.log("Se ha eliminado el movimiento correctamente");
-     }else{
-         console.log("No se ha eliminado el movimiento correctamente");
-     }
+   
 });
 
 test('Eliminar movimiento inexistente', async () => {
