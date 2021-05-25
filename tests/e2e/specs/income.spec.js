@@ -38,7 +38,7 @@ describe('Ingresos Test', () => {
 
     });
 
-    it.only('Deberia poder crear un nuevo ingreso con la fecha correcta', () => {
+    it('Deberia poder crear un nuevo ingreso con la fecha correcta', () => {
         cy.visit('/income');
 
         cy.get('input[name=description]').type('Expensas');
