@@ -38,23 +38,4 @@ describe('Ingresos Test', () => {
 
     });
 
-    it('Deberia poder crear un nuevo ingreso con la fecha correcta', () => {
-        cy.visit('/income');
-
-        cy.get('input[name=description]').type('Expensas');
-        cy.get('input[name=date]').type('2021-04-28');
-        cy.get('input[name=category]').type('Bono');
-        cy.get('input[name=amount]').type('100000');
-        cy.contains('Guardar').click();
-       
-        const stub = cy.stub();
-        cy.on('window:alert', stub);
-
-        cy.reload();
-        cy.get('body > main > div > div > div:nth-child(2) > div > div.card-content > div > ul > li:nth-child(5) > div > div.level-left > div:nth-child(2) > div > p:nth-child(2)').should(($date) => {
-            expect($date.text().trim()).equal('2021-4-27');
-          });
-        
-        
-    });
 });
