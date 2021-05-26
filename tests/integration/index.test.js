@@ -3,7 +3,7 @@ const MovementModel = require('../../server/models/movement.js');
 const MovementType = require('../../server/models/movementType.js');
 
 const fetch = require('node-fetch');
-const movementType = require('../../server/models/movementType.js');
+
 
 let server, baseURL;
 
