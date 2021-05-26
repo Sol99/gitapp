@@ -3,6 +3,7 @@ const MovementModel = require('../../server/models/movement.js');
 const MovementType = require('../../server/models/movementType.js');
 
 const fetch = require('node-fetch');
+const movementType = require('../../server/models/movementType.js');
 
 let server, baseURL;
 
@@ -266,3 +267,66 @@ test('Editar movimiento inexistente por api', async () => {
 
     expect(req.status).toBe(404);
 });
+
+
+test('Eliminamos un movimiento', async () => {
+    const movementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+
+    // Buscamos todos los movimientos
+    let movements = await MovementModel.getAll();
+
+    //Eliminamos el movimiento 
+    const deleted = await MovementModel.delete(movement.id);
+
+    //La función debería retornar algo 
+    expect(deleted).not.toBeNull();
+    movements = await MovementModel.getAll();
+    
+    //Corroboramos que no hayan movimientos en la lista
+    expect(movements.rows.length).toBe(0);
+    
+});
+
+test('Eliminamos un movimiento de la api', async () => {
+    const movementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+   
+    const movements = await MovementModel.getAll();  
+
+    //corroboramos que se haya cargado correctamente
+    expect(movements.rows.length).toBe(1);
+    expect(movements.rows[0].amount).toBe(movementData.amount);
+    expect(movements.rows[0].type).toBe(movementData.type);
+    expect(movements.rows[0].category).toBe(movementData.category);
+
+  
+    //eliminamos el movimiento
+    const URL = `${baseURL}/movements/${movement.id}`;
+    const req = await fetch(URL, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        
+    });
+
+    //corroboramos que la operacion haya salido correcta
+    expect(req.status).toBe(200);
+    
+});
+
