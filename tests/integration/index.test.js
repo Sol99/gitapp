@@ -127,6 +127,31 @@ test('Buscar movimientos por api filtrando por tipo income', async () => {
     expect(secondMovement.id).toBe(response.movements[0].id);
 });
 
+test('Buscar movimientos por api filtrando por tipo expense', async () => {
+    const firstMovementData = {
+        date: '01/01/2021',
+        amount: 1000.0,
+        category: 'Supermercado',
+    };
+
+    const secondMovementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    };
+
+    // Creamos los movimientos
+    const firstMovement = await MovementModel.create(firstMovementData);
+    await MovementModel.create(secondMovementData);
+
+    const URL = `${baseURL}/movements?type=${MovementType.EXPENSE}`;
+    const req = await fetch(URL);
+    const response = await req.json();
+
+    expect(response.movements.length).toBe(1);
+    expect(firstMovement.id).toBe(response.movements[0].id);
+});
 
 test('Buscar movimientos por api filtrando por tipo inexistente', async () => {
     const firstMovementData = {
