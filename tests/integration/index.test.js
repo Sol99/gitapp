@@ -268,33 +268,6 @@ test('Editar movimiento inexistente por api', async () => {
     expect(req.status).toBe(404);
 });
 
-
-test('Eliminamos un movimiento', async () => {
-    const movementData = {
-        date: '04/01/2021',
-        amount: 50000.0,
-        type: MovementType.INCOME,
-        category: 'Sueldo',
-    };
-
-    // Creamos el movimiento
-    const movement = await MovementModel.create(movementData);
-
-    // Buscamos todos los movimientos
-    let movements = await MovementModel.getAll();
-
-    //Eliminamos el movimiento 
-    const deleted = await MovementModel.delete(movement.id);
-
-    //La función debería retornar algo 
-    expect(deleted).not.toBeNull();
-    movements = await MovementModel.getAll();
-    
-    //Corroboramos que no hayan movimientos en la lista
-    expect(movements.rows.length).toBe(0);
-    
-});
-
 test('Eliminamos un movimiento de la api', async () => {
     const movementData = {
         date: '04/01/2021',
