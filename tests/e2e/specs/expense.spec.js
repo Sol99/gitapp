@@ -28,4 +28,26 @@ describe('Egresos Test', () => {
 
         cy.get('[data-testid=movement]').should('have.length', 5);
     });
+
+    //agrega el test para el caracter -
+
+    it('Verifica que no se permita escribir caracter -', () => {
+        cy.visit('/expense');
+        cy.get('input[name=description]').type('Ropa');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('-10000');
+        cy.get('input[name=amount]').should('have.value', '10000');  
+    });
+
+    //agrega el test para el caracter +
+
+    it('Verifica que no se permita escribir caracter +', () => {
+        cy.visit('/expense');
+        cy.get('input[name=description]').type('Bono salarial');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('+10000');
+        cy.get('input[name=amount]').should('have.value', '10000');  
+    });
 });

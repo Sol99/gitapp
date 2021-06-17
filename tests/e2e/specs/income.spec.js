@@ -39,18 +39,25 @@ describe('Ingresos Test', () => {
 
     });
 
-    it('Deberia aparecer alerta de guardado', () => {
+    //agrega el test para el caracter -
+    
+    it('Verifica que no se permita escribir caracter -', () => {
         cy.visit('/income');
         cy.get('input[name=description]').type('Bono salarial');
         cy.get('input[name=date]').type('2021-04-26');
         cy.get('input[name=category]').type('Bono');
-        cy.get('input[name=amount]').type('100000');
-        cy.contains('Guardar').click();
-        
+        cy.get('input[name=amount]').type('-10000');
+        cy.get('input[name=amount]').should('have.value', '10000');  
+    });
 
-        cy.on('window:alert', (str) => {
-            expect(str).to.equal('Movimiento guardado con exito');
+    //agrega el test para el caracter + 
 
-        });    
+    it('Verifica que no se permita escribir caracter +', () => {
+        cy.visit('/income');
+        cy.get('input[name=description]').type('Bono salarial');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('+10000');
+        cy.get('input[name=amount]').should('have.value', '10000');  
     });
 });
