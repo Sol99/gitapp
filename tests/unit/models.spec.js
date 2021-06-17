@@ -107,14 +107,14 @@ test('Listar movimientos con resultados', async () => {
 
 test('Listar movimientos con limite', async () => {
     const firstMovementData = {
-        date: '04/01/2021',
+        date: '05/01/2021',
         amount: 50000.0,
         type: MovementType.INCOME,
         category: 'Sueldo',
     };
 
     const secondMovementData = {
-        date: '05/01/2021',
+        date: '04/01/2021',
         amount: 1000.0,
         category: 'Supermercado',
     };

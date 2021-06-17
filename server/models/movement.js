@@ -32,7 +32,7 @@ const Movement = db.define(
         },
         description: {
             type: Sequelize.STRING,
-            allowNull: false,
+            allowNull: true,
         },
 
     },
@@ -51,11 +51,13 @@ const getAllMovements = (limit, skip, type) => {
             ...where,
             type: type,
         };
+        
     }
 
     return Movement.findAndCountAll({
         limit: limit,
         offset: skip,
+        order: [['date','DESC']],       
         attributes: {
             exclude: ['createdAt', 'updatedAt'],
         },
