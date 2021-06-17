@@ -4,6 +4,7 @@ const MovementType = require('../../server/models/movementType.js');
 
 const fetch = require('node-fetch');
 
+
 let server, baseURL;
 
 beforeAll(async () => {
@@ -126,6 +127,31 @@ test('Buscar movimientos por api filtrando por tipo income', async () => {
     expect(secondMovement.id).toBe(response.movements[0].id);
 });
 
+test('Buscar movimientos por api filtrando por tipo expense', async () => {
+    const firstMovementData = {
+        date: '01/01/2021',
+        amount: 1000.0,
+        category: 'Supermercado',
+    };
+
+    const secondMovementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    };
+
+    // Creamos los movimientos
+    const firstMovement = await MovementModel.create(firstMovementData);
+    await MovementModel.create(secondMovementData);
+
+    const URL = `${baseURL}/movements?type=${MovementType.EXPENSE}`;
+    const req = await fetch(URL);
+    const response = await req.json();
+
+    expect(response.movements.length).toBe(1);
+    expect(firstMovement.id).toBe(response.movements[0].id);
+});
 
 test('Buscar movimientos por api filtrando por tipo inexistente', async () => {
     const firstMovementData = {
@@ -266,3 +292,39 @@ test('Editar movimiento inexistente por api', async () => {
 
     expect(req.status).toBe(404);
 });
+
+test('Eliminamos un movimiento de la api', async () => {
+    const movementData = {
+        date: '04/01/2021',
+        amount: 50000.0,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    };
+
+    // Creamos el movimiento
+    const movement = await MovementModel.create(movementData);
+   
+    const movements = await MovementModel.getAll();  
+
+    //corroboramos que se haya cargado correctamente
+    expect(movements.rows.length).toBe(1);
+    expect(movements.rows[0].amount).toBe(movementData.amount);
+    expect(movements.rows[0].type).toBe(movementData.type);
+    expect(movements.rows[0].category).toBe(movementData.category);
+
+  
+    //eliminamos el movimiento
+    const URL = `${baseURL}/movements/${movement.id}`;
+    const req = await fetch(URL, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        
+    });
+
+    //corroboramos que la operacion haya salido correcta
+    expect(req.status).toBe(200);
+    
+});
+
