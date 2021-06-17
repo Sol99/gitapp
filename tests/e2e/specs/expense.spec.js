@@ -12,9 +12,9 @@ describe('Egresos Test', () => {
             .contains('editar')
             .click();
 
-        cy.get('input[name=id]').should('have.value', '1');
+        cy.get('input[name=id]').should('have.value', '19');
         cy.get('input[name=category]').should('have.value', 'Supermercado');
-        cy.get('input[name=amount]').should('have.value', '1000');
+        cy.get('input[name=amount]').should('have.value', '1498');
     });
 
     it('Deberia poder crear un nuevo egreso', () => {
