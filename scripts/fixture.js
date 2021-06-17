@@ -1,146 +1,127 @@
-const MovementModel = require('../server/models/movement.js');
-
+const { Movement } = require('../server/models/movement.js');
 const MovementType = require('../server/models/movementType.js');
 
+const movements = [
+    {
+        date: '01/01/2021',
+        amount: 1000,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '01/04/2021',
+        amount: 587.5,
+        type: MovementType.EXPENSE,
+        category: 'Librería',
+    },
+    {
+        date: '01/04/2021',
+        amount: 50000,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    },
+    {
+        date: '01/04/2021',
+        amount: 233,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '01/05/2021',
+        amount: 10000,
+        type: MovementType.INCOME,
+        category: 'Plazo Fijo',
+    },
+    {
+        date: '01/07/2021',
+        amount: 847,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '01/08/2021',
+        amount: 751,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '01/10/2021',
+        amount: 2500,
+        type: MovementType.EXPENSE,
+        category: 'Reparación Celular',
+    },
+    {
+        date: '01/14/2021',
+        amount: 1432,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '01/15/2021',
+        amount: 2300,
+        type: MovementType.EXPENSE,
+        category: 'Librería',
+    },
+    {
+        date: '01/20/2021',
+        amount: 4877,
+        type: MovementType.EXPENSE,
+        category: 'Regalos',
+    },
+    {
+        date: '01/21/2021',
+        amount: 2900,
+        type: MovementType.EXPENSE,
+        category: 'Regalos',
+    },
+    {
+        date: '02/04/2021',
+        amount: 50000,
+        type: MovementType.INCOME,
+        category: 'Sueldo',
+    },
+    {
+        date: '02/05/2021',
+        amount: 11000,
+        type: MovementType.INCOME,
+        category: 'Plazo Fijo',
+    },
+    {
+        date: '02/07/2021',
+        amount: 2100,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '02/08/2021',
+        amount: 876,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '02/10/2021',
+        amount: 1398,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '02/15/2021',
+        amount: 3456,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+    {
+        date: '02/20/2021',
+        amount: 1498,
+        type: MovementType.EXPENSE,
+        category: 'Supermercado',
+    },
+];
+
 const init = () => {
-    return MovementModel.Movement.sync({ force: true })
-        .then(() =>
-            MovementModel.create({
-                date: '01/01/2021',
-                amount: 1000.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '04/01/2021',
-                amount: 587.5,
-                category: 'Librería',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '04/01/2021',
-                amount: 50000.0,
-                type: MovementType.INCOME,
-                category: 'Sueldo',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '04/01/2021',
-                amount: 233.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '05/01/2021',
-                amount: 10000.0,
-                type: MovementType.INCOME,
-                category: 'Plazo Fijo',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '07/01/2021',
-                amount: 847.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '08/01/2021',
-                amount: 751.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '10/01/2021',
-                amount: 2500.0,
-                category: 'Reparación Celular',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '14/01/2021',
-                amount: 1432.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '15/01/2021',
-                amount: 2300.0,
-                category: 'Librería',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '20/01/2021',
-                amount: 4877.0,
-                category: 'Regalos',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '21/01/2021',
-                amount: 2900.0,
-                category: 'Regalos',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '04/02/2021',
-                amount: 50000.0,
-                type: MovementType.INCOME,
-                category: 'Sueldo',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '05/02/2021',
-                amount: 11000.0,
-                type: MovementType.INCOME,
-                category: 'Plazo Fijo',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '07/02/2021',
-                amount: 2100.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '08/02/2021',
-                amount: 876.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '10/02/2021',
-                amount: 1398.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '15/02/2021',
-                amount: 3456.0,
-                category: 'Supermercado',
-            })
-        )
-        .then(() =>
-            MovementModel.create({
-                date: '20/02/2021',
-                amount: 1498.0,
-                category: 'Supermercado',
-            })
-        );
+    return Movement.sync({ force: true }).then(() =>
+        Movement.bulkCreate(movements)
+    );
 };
 
 if (require.main === module) {
