@@ -1,0 +1,37 @@
+{% set activeLink = "home" %}
+{% extends "_base.html" %}
+
+{% block main %}
+<div class="container">
+    <div class="card card-nosotros">
+        <div class="seccion1">
+            <h1 class="titulo-nosotros" id="titulo-about" >Acerca De Nosotros</h1>
+            <h2 class="informacion">Esta aplicación fue realizada por el grupo 8</h2>
+            <h2 class="informacion">Catedra: Ingeniería del Software</h2>
+        </div>
+        <div class="seccion1">
+            <h2 class="titulo-integrantes" id="integrantes-about">Integrantes</h2>
+            <ul class="integrantes">
+                <li class="integrante">
+                    <a href="https://github.com/Sol99" target="_blank">Caceres, Solange</a>
+                </li>
+                <li class="integrante">
+                    <a href="https://github.com/juancruzchemin" target="_blank">Chemin Viera, Juan Cruz</a>
+                </li>
+                <li class="integrante">
+                    <a href="https://github.com/LautaroGuasch" target="_blank">Guasch Vives, Lautaro </a>
+                </li>
+                <li class="integrante">
+                    <a href="https://github.com/manuel-robles" target="_blank">Robles, Manuel</a>
+                </li>
+            </ul>
+        </div>
+        <img src="/img/github.png" alt="Logo Github" width="4%" height="4%">
+        <div>
+            <a class="repo" href="https://github.com/Sol99/gitapp" target="_blank">
+                Link: Repositorio de github grupo 8
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

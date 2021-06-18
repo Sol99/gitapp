@@ -63,6 +63,8 @@
                 step="0.01"
                 placeholder=""
                 required
+                onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                min=0
                 value="{{ movement.amount if movement.amount }}"
             />
         </div>

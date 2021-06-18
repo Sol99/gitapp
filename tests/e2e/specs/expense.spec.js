@@ -12,9 +12,9 @@ describe('Egresos Test', () => {
             .contains('editar')
             .click();
 
-        cy.get('input[name=id]').should('have.value', '1');
+        cy.get('input[name=id]').should('have.value', '19');
         cy.get('input[name=category]').should('have.value', 'Supermercado');
-        cy.get('input[name=amount]').should('have.value', '1000');
+        cy.get('input[name=amount]').should('have.value', '1498');
     });
 
     it('Deberia poder crear un nuevo egreso', () => {
@@ -27,5 +27,27 @@ describe('Egresos Test', () => {
         cy.reload();
 
         cy.get('[data-testid=movement]').should('have.length', 5);
+    });
+
+    //agrega el test para el caracter -
+
+    it('Verifica que no se permita escribir caracter -', () => {
+        cy.visit('/expense');
+        cy.get('input[name=description]').type('Ropa');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('-10000');
+        cy.get('input[name=amount]').should('have.value', '10000');  
+    });
+
+    //agrega el test para el caracter +
+
+    it('Verifica que no se permita escribir caracter +', () => {
+        cy.visit('/expense');
+        cy.get('input[name=description]').type('Bono salarial');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('+10000');
+        cy.get('input[name=amount]').should('have.value', '10000');  
     });
 });

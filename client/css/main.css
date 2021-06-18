@@ -123,6 +123,10 @@ html {
         margin-right: 0;
     }
 
+    .about{
+        margin-top: 210%;
+    }
+
     .aside-item-text {
         margin-left: 1rem;
     }
@@ -175,3 +179,72 @@ html {
     display: none;    
 }
 
+.informacion{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: large;
+}
+
+.titulo-nosotros{
+    font-size: xx-large;
+    color: white;
+}
+
+.titulo-nosotros:hover{
+    text-decoration: underline;
+    font-weight: 750;
+}
+
+.card-nosotros{
+    text-align: center; 
+    padding: 2%;
+}
+
+.integrantes{
+    margin-top: 1%;
+}
+
+.integrante{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.integrante a{
+   color: white;
+   font-size: large;
+}
+
+.integrante a:hover{
+    font-weight: 700;
+    text-decoration: underline;
+ }
+
+.seccion1{
+    border-style: solid;
+    border-color: blue;
+    background-color: darkcyan;
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.titulo-integrantes{
+    font-size: xx-large;
+    color: white;
+}
+
+.titulo-integrantes:hover{
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.repo{
+    color: black;
+    font-weight: 500;
+}
+
+.repo:hover{
+    font-weight: 700;
+    text-decoration: underline;
+    color: blue;
+}

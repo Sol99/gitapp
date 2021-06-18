@@ -12,9 +12,9 @@ describe('Ingresos Test', () => {
             .contains('editar')
             .click();
 
-        cy.get('input[name=id]').should('have.value', '3');
-        cy.get('input[name=category]').should('have.value', 'Sueldo');
-        cy.get('input[name=amount]').should('have.value', '50000');
+        cy.get('input[name=id]').should('have.value', '14');
+        cy.get('input[name=category]').should('have.value', 'Plazo Fijo');
+        cy.get('input[name=amount]').should('have.value', '11000');
     });
 
     it('Deberia poder crear un nuevo ingreso', () => {
@@ -39,18 +39,25 @@ describe('Ingresos Test', () => {
 
     });
 
-    it('Deberia aparecer alerta de guardado', () => {
+    //agrega el test para el caracter -
+    
+    it('Verifica que no se permita escribir caracter -', () => {
         cy.visit('/income');
         cy.get('input[name=description]').type('Bono salarial');
         cy.get('input[name=date]').type('2021-04-26');
         cy.get('input[name=category]').type('Bono');
-        cy.get('input[name=amount]').type('100000');
-        cy.contains('Guardar').click();
-        
+        cy.get('input[name=amount]').type('-10000');
+        cy.get('input[name=amount]').should('have.value', '10000');  
+    });
 
-        cy.on('window:alert', (str) => {
-            expect(str).to.equal('Movimiento guardado con exito');
+    //agrega el test para el caracter + 
 
-        });    
+    it('Verifica que no se permita escribir caracter +', () => {
+        cy.visit('/income');
+        cy.get('input[name=description]').type('Bono salarial');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('+10000');
+        cy.get('input[name=amount]').should('have.value', '10000');  
     });
 });

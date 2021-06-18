@@ -51,6 +51,15 @@
                 <img src="/assets/expense.svg" alt="expense logo" />
                 <span class="aside-item-text">Egresos</span>
             </a>
+
+            <a
+                href="/about"
+                class="aside-item about {{ 'is-active' if activeLink === 'about' }}"
+            >
+                <img src="/img/about.png" alt="About logo" />
+                <span class="aside-item-text">Nosotros</span>
+            </a>
+
         </nav>
 
         <main class="main px-4 mt-4">{% block main %} {% endblock %}</main>
