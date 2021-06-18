@@ -14,5 +14,10 @@ router.get('/expense', function (req, res) {
     res.render('expense');
 });
 
+router.get('/about', function (req, res) {
+    res.render('about');
+});
+
+
 
 module.exports = router;
