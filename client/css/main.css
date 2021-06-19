@@ -248,3 +248,15 @@ html {
     text-decoration: underline;
     color: blue;
 }
+
+.ingreso::before {
+    font-weight: negrita;
+    color: #48c774;
+    content: "+";
+}
+
+.egreso::before{
+    font-weight: negrita;
+    color: #f14668;
+    content: "-";
+}
