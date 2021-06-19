@@ -50,4 +50,17 @@ describe('Egresos Test', () => {
         cy.get('input[name=amount]').type('+10000');
         cy.get('input[name=amount]').should('have.value', '10000');  
     });
+    it('Los movimientos deberian contener la clase que asigna el caracter -', () => {
+        cy.visit('/expense');
+        //creamos un movimiento para verificar que se le aplique la clase
+        cy.get('input[name=description]').type('Supermercado');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Gasto');
+        cy.get('input[name=amount]').type('18000');
+        cy.contains('Guardar').click();
+
+        cy.get('p[id=valor]')
+            .should('have.class', 'egreso');
+    });
 });
+   

@@ -24,8 +24,8 @@
 
     <div class="level-right">
         <div class="level-item">
-            <p
-                class="{{ 'has-text-success' if movement.type == 'income' else 'has-text-danger' }} is-size-3"
+            <p id="valor"
+                class="{{ 'has-text-success ingreso' if movement.type == 'income' else 'has-text-danger egreso' }} is-size-3"
             >
                 $ {{ movement.amount | monefy }}
             </p>

@@ -60,4 +60,17 @@ describe('Ingresos Test', () => {
         cy.get('input[name=amount]').type('+10000');
         cy.get('input[name=amount]').should('have.value', '10000');  
     });
+    it('Los movimientos deberian contener la clase que asigna el caracter +', () => {
+        cy.visit('/income');
+        //creamos un movimiento para verificar que se le aplique la clase
+        cy.get('input[name=description]').type('Bono salarial');
+        cy.get('input[name=date]').type('2021-04-26');
+        cy.get('input[name=category]').type('Bono');
+        cy.get('input[name=amount]').type('10000');
+        cy.contains('Guardar').click();
+
+        cy.get('p[id=valor]')
+            .contains('10.000')
+            .should('have.class', 'ingreso')
+    });
 });
