@@ -123,10 +123,6 @@ html {
         margin-right: 0;
     }
 
-    .about{
-        margin-top: 210%;
-    }
-
     .aside-item-text {
         margin-left: 1rem;
     }
@@ -260,3 +256,7 @@ html {
     color: #f14668;
     content: "-";
 }
+.modal-backdrop{
+    z-index: 1;
+}
+
