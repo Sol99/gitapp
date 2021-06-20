@@ -43,4 +43,11 @@ describe('Home Test', () => {
         cy.get('[id=div-titulo2]').should('have.class', 'card-header');
         cy.get('[id=div-titulo3]').should('have.class', 'card-header');
     });
+
+    it('Deberia aparecer el modal de informacion', () => {
+        cy.visit('/');
+        cy.get('[id=button-modal]')
+        .click();
+        cy.get('[class]').should('have.class', 'modal-header');
+      });
 });
