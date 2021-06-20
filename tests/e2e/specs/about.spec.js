@@ -34,4 +34,16 @@ describe('About Test', () => {
             .should('contain', 'https://github.com/LautaroGuasch')
     });
 
+   
+    it('El boton de Gitapp me deberia llevar al inicio', () => {
+        cy.visit('/about');        
+
+        cy.contains('Gitapp').click()
+        .title()
+        .should('eq', 'Gitapp')
+        cy.get('[class=container]').should('have.id', 'resumen'); 
+        //esta clase con id resumen solo esta en el home
+        //verificando que se encuentra esa clase compruebo que estoy en el home     
+    });
+
 });
