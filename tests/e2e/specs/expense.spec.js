@@ -62,5 +62,17 @@ describe('Egresos Test', () => {
         cy.get('p[id=valor]')
             .should('have.class', 'egreso');
     });
+
+   
+    it('El boton de Gitapp me deberia llevar al inicio', () => {
+        cy.visit('/expense');        
+
+        cy.contains('Gitapp').click()
+        .title()
+        .should('eq', 'Gitapp')
+        cy.get('[class=container]').should('have.id', 'resumen'); 
+        //esta clase con id resumen solo esta en el home
+        //verificando que se encuentra esa clase compruebo que estoy en el home     
+    });
 });
    
