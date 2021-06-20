@@ -260,3 +260,7 @@ html {
     z-index: 1;
 }
 
+.bienvenido{
+    font-weight: 500;
+    font-size: larger;
+}
