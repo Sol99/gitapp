@@ -73,4 +73,16 @@ describe('Ingresos Test', () => {
             .contains('10.000')
             .should('have.class', 'ingreso')
     });
+
+    it('El boton de Gitapp me deberia llevar al inicio', () => {
+        cy.visit('/income');        
+
+        cy.contains('Gitapp').click()
+        .title()
+        .should('eq', 'Gitapp')
+        cy.get('[class=container]').should('have.id', 'resumen'); 
+        //esta clase con id resumen solo esta en el home
+        //verificando que se encuentra esa clase compruebo que estoy en el home     
+    });
+
 });
