@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [1.2.0] - 2021-06-20
+
+### Added
+
+- Agrega funcionalidad en el logo
+- Agrega boton de informacion
+- Agrega signo "-" y "+" en la lista de movimientos
+- Agrega vista about 
+- Agrega boton de "acerca de"
+
+### Fixed
+
+- Arregla monto negativo
+- Arregla orden del listado de movimientos
 
 ## [1.1.0] - 2021-06-17
 
@@ -47,7 +61,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Home UI with charts and last movements
 -   Incomes UI with last incomes
 
-[unreleased]: https://github.com/Sol99/gitapp/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/Sol99/gitapp/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/Sol99/gitapp/releases/tag/v1.2.0
 [1.1.0]: https://github.com/Sol99/gitapp/releases/tag/v1.1.0
 [1.0.1]: https://github.com/Sol99/gitapp/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Sol99/gitapp/releases/tag/v1.0.0
