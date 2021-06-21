@@ -50,4 +50,24 @@ describe('Home Test', () => {
         .click();
         cy.get('[class]').should('have.class', 'modal-header');
       });
+
+    it('El primer boton de info se tiene que desplegar', () => {
+        cy.visit('/');        
+
+        cy.contains('info').invoke('show').click()
+        .next()
+        .should('have.text', 'Muestra los gastos del mes')
+        //de esta manera sabemos que luego de hacer click tendria que aparecer el texto de "Muestra los gastos del mes"
+        //como en cypress no hay una funcion de hover, realizamos el click()
+    });
+
+    it('El segundo boton de info se tiene que desplegar', () => {
+        cy.get('[id=div-titulo3]')
+                .contains('info').click()
+                .next()
+                .should('have.text', 'Muestra el balance por mes')
+
+        //de esta manera sabemos que luego de hacer click tendria que aparecer el texto de "Muestra el balance por mes"
+        //como en cypress no hay una funcion de hover, realizamos el click()
+    });
 });

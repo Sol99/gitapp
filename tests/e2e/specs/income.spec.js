@@ -85,4 +85,15 @@ describe('Ingresos Test', () => {
         //verificando que se encuentra esa clase compruebo que estoy en el home     
     });
 
+    it('El boton de info se tiene que desplegar', () => {
+        cy.visit('/income');        
+
+        cy.contains('info').invoke('show').click()
+        .next()
+        .should('have.text', 'Todos los campos deben ser completados')    
+        //de esta manera sabemos que luego de hacer click tendria que aparecer el texto de "Todos los campos deben ser completados"
+        //como en cypress no hay una funcion de hover, realizamos el click()
+    });
+
+
 });
